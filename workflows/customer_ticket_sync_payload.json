@@ -1,0 +1,29 @@
+{
+  "name": "customer-ticket-sync-demo",
+  "description": "Illustrative payload contract for an n8n webhook-driven workflow. Use this as the inbound schema when building the flow inside n8n.",
+  "expected_webhook_payload": {
+    "record_type": "ticket",
+    "source_system": "zendesk",
+    "source_record_id": "TICKET-10021",
+    "summary": "Customer reports duplicate invoice charge after plan upgrade.",
+    "category": "billing",
+    "priority": "high",
+    "recommended_actions": [
+      "notify_support",
+      "create_issue",
+      "log_to_sheet"
+    ],
+    "raw_enrichment": {
+      "provider": "mock",
+      "mode": "heuristic-demo"
+    }
+  },
+  "suggested_n8n_flow": [
+    "Webhook Trigger",
+    "IF priority == high",
+    "Slack notification",
+    "Create issue or task",
+    "Append row to spreadsheet",
+    "Respond to webhook"
+  ]
+}

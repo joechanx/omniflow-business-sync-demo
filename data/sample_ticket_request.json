@@ -1,0 +1,14 @@
+{
+  "source_system": "zendesk",
+  "source_record_id": "TICKET-10021",
+  "record_type": "ticket",
+  "provider": "mock",
+  "idempotency_key": "ticket-10021-v1",
+  "payload": {
+    "customer_name": "Ava Chen",
+    "customer_email": "ava@example.com",
+    "subject": "Double charge on invoice",
+    "description": "I was billed twice after upgrading the subscription. Please fix ASAP.",
+    "priority_hint": "high"
+  }
+}

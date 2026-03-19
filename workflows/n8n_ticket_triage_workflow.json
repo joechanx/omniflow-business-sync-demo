@@ -1,0 +1,78 @@
+{
+  "name": "OmniFlow Ticket Triage Demo",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "omniflow-ticket-triage",
+        "httpMethod": "POST",
+        "responseMode": "lastNode"
+      },
+      "id": "Webhook_1",
+      "name": "Incoming Ticket Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [260, 300],
+      "webhookId": "omniflow-ticket-triage"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": false,
+        "values": {
+          "string": [
+            {
+              "name": "workflow_status",
+              "value": "received"
+            },
+            {
+              "name": "handler_team",
+              "value": "support-ops"
+            }
+          ]
+        }
+      },
+      "id": "Set_1",
+      "name": "Annotate Ticket",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [520, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"status\": \"accepted\",\n  \"workflow\": \"OmniFlow Ticket Triage Demo\",\n  \"source_record_id\": $json.source_record_id,\n  \"category\": $json.category,\n  \"priority\": $json.priority,\n  \"handler_team\": $json.handler_team\n}"
+      },
+      "id": "Respond_1",
+      "name": "Respond to OmniFlow",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [800, 300]
+    }
+  ],
+  "connections": {
+    "Incoming Ticket Webhook": {
+      "main": [
+        [
+          {
+            "node": "Annotate Ticket",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Annotate Ticket": {
+      "main": [
+        [
+          {
+            "node": "Respond to OmniFlow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "omniflow-demo-v1"
+}

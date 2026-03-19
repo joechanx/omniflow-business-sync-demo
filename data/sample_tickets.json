@@ -1,0 +1,20 @@
+[
+  {
+    "ticket_id": "TICKET-10020",
+    "subject": "Double charge on invoice",
+    "description": "Customer reported duplicate billing after plan change.",
+    "priority_hint": "high"
+  },
+  {
+    "ticket_id": "TICKET-10021",
+    "subject": "App crash after login",
+    "description": "The mobile app crashes immediately after authentication.",
+    "priority_hint": "high"
+  },
+  {
+    "ticket_id": "TICKET-10022",
+    "subject": "Need export format clarification",
+    "description": "Customer asked whether CSV export includes archived rows.",
+    "priority_hint": "medium"
+  }
+]

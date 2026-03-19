@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OmniFlow Demo Console</title>
+  <link rel="stylesheet" href="/demo/styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Portfolio demo</p>
+        <h1>OmniFlow Demo Console</h1>
+        <p class="hero-copy">
+          A small front-end for exercising a business data sync API that validates input,
+          enriches records through AI providers, triggers workflows, and stores sync traces.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="/docs" target="_blank" rel="noreferrer">Open Swagger</a>
+          <button id="load-runs" class="button secondary">Refresh recent runs</button>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="mini-stat">
+          <span>UI route</span>
+          <strong>/demo</strong>
+        </div>
+        <div class="mini-stat">
+          <span>Core endpoint</span>
+          <strong>/api/v1/sync/ticket</strong>
+        </div>
+        <div class="mini-stat">
+          <span>Focus</span>
+          <strong>Reliable business sync</strong>
+        </div>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card form-card">
+        <div class="card-header">
+          <div>
+            <h2>Run a sync flow</h2>
+            <p>Send a ticket or lead through the orchestration pipeline.</p>
+          </div>
+          <div class="button-group compact">
+            <button id="load-ticket" class="button secondary">Sample ticket</button>
+            <button id="load-lead" class="button secondary">Sample lead</button>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <label>
+            <span>Record type</span>
+            <select id="record-type">
+              <option value="ticket">ticket</option>
+              <option value="lead">lead</option>
+            </select>
+          </label>
+          <label>
+            <span>Provider</span>
+            <select id="provider"></select>
+          </label>
+        </div>
+
+        <div class="field-row">
+          <label>
+            <span>Source system</span>
+            <input id="source-system" type="text" value="zendesk" />
+          </label>
+          <label>
+            <span>Source record ID</span>
+            <input id="source-record-id" type="text" value="TICKET-DEMO-001" />
+          </label>
+        </div>
+
+        <label>
+          <span>Idempotency key</span>
+          <input id="idempotency-key" type="text" value="ticket-demo-001-v1" />
+        </label>
+
+        <label>
+          <span>Payload JSON</span>
+          <textarea id="payload-editor" spellcheck="false"></textarea>
+        </label>
+
+        <div class="button-group">
+          <button id="run-sync" class="button primary">Run sync</button>
+          <button id="replay-sync" class="button secondary">Replay same request</button>
+        </div>
+
+        <div id="status-banner" class="status-banner hidden"></div>
+      </section>
+
+      <section class="card output-card">
+        <div class="card-header">
+          <div>
+            <h2>Latest response</h2>
+            <p>Normalized record, fallback metadata, and downstream sync result.</p>
+          </div>
+        </div>
+        <pre id="response-output" class="code-block">Run a sample flow to inspect the response.</pre>
+      </section>
+
+      <section class="card output-card">
+        <div class="card-header">
+          <div>
+            <h2>Recent runs</h2>
+            <p>Recent traces pulled from SQLite through the API.</p>
+          </div>
+        </div>
+        <div id="runs-empty" class="empty-state">No runs loaded yet.</div>
+        <div id="runs-list" class="runs-list"></div>
+      </section>
+
+      <section class="card output-card">
+        <div class="card-header">
+          <div>
+            <h2>What this demonstrates</h2>
+            <p>How to position the repo in a portfolio or client proposal.</p>
+          </div>
+        </div>
+        <ul class="feature-list">
+          <li>Stable API entry point for inbound business records</li>
+          <li>Provider abstraction and fallback for external AI dependencies</li>
+          <li>Workflow/webhook handoff for n8n or other automation tools</li>
+          <li>Idempotency, trace IDs, persisted run history, and inspectable outcomes</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+  <script src="/demo/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "source_system": "hubspot-form",
+  "source_record_id": "LEAD-5008",
+  "record_type": "lead",
+  "provider": "mock",
+  "idempotency_key": "lead-5008-v1",
+  "payload": {
+    "name": "Mia Lin",
+    "email": "mia@example.com",
+    "company": "NorthStar Retail",
+    "notes": "Interested in an AI workflow integration for support and CRM sync.",
+    "region": "APAC"
+  }
+}
